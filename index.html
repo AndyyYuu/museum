@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AR 模型展示</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR 模型</title>
+
+  <!-- 加载 model-viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer@1.11.1/dist/model-viewer.min.js"></script>
+
+  <!-- 加载 MeshoptDecoder（最重要的一行） -->
+  <script src="https://unpkg.com/meshoptimizer/meshopt_decoder.js"></script>
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+    body,html {
+      margin:0;
+      padding:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:#000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
     model-viewer {
-      width: 100%;
-      height: 100%;
+      width:100%;
+      height:100%;
     }
   </style>
 </head>
+
 <body>
   <model-viewer
-    id="mv"
     src="cute1.glb"
-    alt="3D 模型"
+    alt="3D Model"
     autoplay
-    camera-controls
     auto-rotate
-    preload
-    reveal="interaction"
-    poster="poster.png"
-    crossorigin="anonymous"
+    camera-controls
     ar
-    ar-modes="webxr scene-viewer quick-look">
+    ar-modes="webxr scene-viewer quick-look"
+    environment-image="neutral"
+    crossorigin="anonymous">
   </model-viewer>
-
-  <script>
-    const mv = document.getElementById('mv');
-    mv.addEventListener('error', (e) => {
-      console.error('Model-viewer 加载错误:', e);
-    });
-    mv.addEventListener('progress', (e) => {
-      console.log('加载进度:', e.detail.totalProgress);
-    });
-  </script>
 </body>
 </html>
+
 
 
